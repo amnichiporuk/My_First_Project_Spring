@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org ">
+<head>
+    <title>Форма обновления адреса клиента</title>
+</head>
+<h2>Обновить адрес клиента</h2>
+<form th:action="@{/address/saveUpdateAddress}" th:object="${client}" method="post">
+
+    <input type="text" th:field="*{clientId}" th:value="${client.getClientId}" hidden/>
+
+    <p>Клиент:
+        <input type="text" th:field="*{clientName}" th:value="${client.getClientName}" readonly/>
+    </p>
+
+    <input name="type" th:field="*{type}" th:value="${client.getType}" hidden/>
+    <input type="text" th:field="*{dateAdded}" th:value="${client.getDateAdded}" hidden/>
+    <input type="text" th:field="*{addressId}" th:value="${client.getAddressId}" hidden/>
+
+    <p>
+        <div th:if="${#fields.hasErrors('ip')}" th:errors="*{ip}"></div>
+        IP: <input type="text" th:field="*{ip}" th:value="${client.getIp}"/>
+    </p>
+
+    <p>
+        <div th:if="${#fields.hasErrors('mac')}" th:errors="*{mac}"></div>
+        MAC: <input type="text" th:field="*{mac}" th:value="${client.getMac}"/>
+    </p>
+
+    <p>
+        <div th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></div>
+        Модель: <input type="text" th:field="*{model}" th:value="${client.getModel}"/>
+    </p>
+
+    <p>
+        <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+        Адрес: <input type="text" th:field="*{address}" th:value="${client.getAddress}"/>
+    </p>
+
+    <p>
+        <input type="submit" value="Обновить адрес клиента" style="height: 35px; width: 200px; margin-left: 20px; display: block; justify-content: left">
+    </p>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org ">
+<head>
+    <title>Форма обновления данных клиента</title>
+</head>
+<h2>Обновить данные клиента</h2>
+<form th:action="@{/client/saveUpdateClient}" th:object="${client}" method="post">
+
+    <input type="text" th:field="*{clientId}" th:value="${client.getClientId}" hidden/>
+
+    <p>
+        <div th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}"></div>
+        Имя клиента: <input type="text" th:field="*{clientName}" th:value="${client.getClientName}">
+    </p>
+
+    <p>
+        <div th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
+        Тип клиента:
+        <select name="type" th:field="*{type}">
+            <option value="">Выберите тип клиента...</option>
+            <option value="Юридическое лицо">Юридическое лицо</option>
+            <option value="Физическое лицо">Физическое лицо</option>
+        </select>
+
+    </p>
+
+    <p>Дата добавления клиента:
+        <input type="text" th:field="*{dateAdded}" th:value="${client.dateAdded}"/>
+    </p>
+
+    <input type="text" th:field="*{addressId}" th:value="${client.getAddressId}" hidden/>
+    <input type="text" th:field="*{ip}" th:value="${client.getIp}" hidden/>
+    <input type="text" th:field="*{mac}" th:value="${client.getMac}"  hidden/>
+    <input type="text" th:field="*{model}" th:value="${client.getModel}"  hidden/>
+    <input type="text" th:field="*{address}" th:value="${client.getAddress}"  hidden/>
+
+    <p>
+        <input type="submit" value="Обновить данные клиента" style="height: 35px; width: 200px; margin-left: 20px; display: block; justify-content: left">
+    </p>
+
+</form>
+</body>
+</html>

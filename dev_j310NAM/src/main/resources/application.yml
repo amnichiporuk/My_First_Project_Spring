@@ -1,0 +1,15 @@
+
+server:
+  port: 10109
+spring:
+  application: name=dev_j310NAM
+  datasource:
+    url: jdbc:mysql://localhost:3306/client_db
+    username: root
+    password: 22306778
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      dialect: org.hibernate.dialectMySQL8Dialect

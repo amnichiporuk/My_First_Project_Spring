@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org ">
+<head>
+    <title>Форма ввода данных нового клиента</title>
+</head>
+<h2>Добавление нового клиента</h2>
+<form th:action="@{/client/saveClient}" th:object="${client}" method="post">
+    <p>
+        <div th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}"></div>
+        Имя клиента: <input type="text" th:field="*{clientName}">
+    </p>
+
+    <p>
+        <div th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
+        Тип клиента:
+        <select name="type" th:field="*{type}">
+            <option value="">Выберите тип клиента...</option>
+            <option value="Юридическое лицо">Юридическое лицо</option>
+            <option value="Физическое лицо">Физическое лицо</option>
+        </select>
+    </p>
+
+    <p>Дата добавления клиента:
+        <input type="text" th:field="*{dateAdded}" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" readonly/>
+    </p>
+
+    <p>
+        <div th:if="${#fields.hasErrors('ip')}" th:errors="*{ip}"></div>
+        IP: <input type="text" th:field="*{ip}"/>
+    </p>
+
+    <p>
+        <div th:if="${#fields.hasErrors('mac')}" th:errors="*{mac}"></div>
+        MAC: <input type="text" th:field="*{mac}"/>
+    </p>
+
+    <p>
+        <div th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></div>
+        Модель: <input type="text" th:field="*{model}"/>
+    </p>
+
+    <p>
+        <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+        Адрес: <input type="text" th:field="*{address}"/>
+    </p>
+
+    <p> <input type="submit" value="Добавить нового клиента" style="height: 35px; width: 200px; margin-left: 20px; display: block; justify-content: left"></p>
+</form>
+</body>
+</html>
+
+
+
+
+
+
